@@ -4,6 +4,15 @@
 
 **Git Bash**
 
+- This is used to access and manipulate the machines
+- Download it here (alongside other git software): https://git-scm.com/downloads
+
+
+**Python**
+
+- This is auto installed with Git Bash and Linx often however
+- This shows the simplicity of Ansible as there is minimal dependencies
+
 ## Steps
 
 ### 1. Clone this repositry
