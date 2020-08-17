@@ -219,7 +219,7 @@ ansible-playbook install_nginx_web.yml
 - Ansible VM controller manages multiple servers
 	- In real life may have up to 60 servers, so automatic control is needed
 
-![Ansible_diagram](images/ansible_pic.PNG) 
+![Ansible_diagram](images/ansible_pic.png) 
 
 ## Ansible
 
