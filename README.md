@@ -139,7 +139,7 @@ nano filename.yml
 - Identation very important
 - Follow example of install_nginx_web.yml
 
-!(playbook_pic)[~/images/nginx_yml_file.PNG]
+![playbook_pic](images/nginx_yml_file.PNG)
 
 ### 11. Run playbook
 
