@@ -33,7 +33,7 @@ vagrant ssh web/aws/db
 sudo apt-get update
 ```
  
-- Do this command for each machine
+- Run the update command for each machine
 
 ### 4. Make the AWS server the controller server
 
