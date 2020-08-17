@@ -1,0 +1,44 @@
+# Where do we want to install file
+- hosts: web
+
+# get the facts
+  gather_facts: yes
+
+# work from root user
+  become: true
+
+# setup app
+  tasks:
+  - name: Update server
+    command: apt-get update -y
+
+  - name: upgrade server
+    command: apt-get upgrade -y
+
+  - name: Install Git
+    apt: pkg=git state=present
+
+  - name: Install nodejs dependencies
+    command: apt-get install software-properties-common -y
+    ignore_errors: True
+
+  - name: download nodejs dependencies
+    shell: curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+    ignore_errors: True
+
+  - name: install nodejs
+    apt: pkg=nodejs state=present
+
+  - name: Install nginx
+    apt: pkg=nginx state=present
+
+  - name: remove old default file
+    shell: rm /etc/nginx/sites-available/default
+
+  - name: link new defualt file up
+    shell: cp /home/vagrant/nginx.default /etc/nginx/sites-available/default
+
+  - name: restart nginx
+    service:
+      name: nginx
+      state: restarted
