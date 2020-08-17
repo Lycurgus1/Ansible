@@ -1,5 +1,90 @@
 # Ansible
 
+## Dependencies
+
+**Git Bash**
+
+## Steps
+
+### 1. Clone this repositry
+
+- As per GitHub commands, fork then download. 
+
+### 2. Run vagrant file
+
+```vagrant up```
+
+- This may take a while on the first go
+
+### 3. Once the machines are up enter each and update them
+
+```
+vagrant status
+vagrant ssh web/aws/db
+sudo apt-get update
+```
+ 
+- Do this command for each machine
+
+### 4. Make the AWS server the controller server
+
+A. Install ansible (within the AWS server)
+
+```
+sudo apt-get install software-properties-common -y
+sudo apt-add-repository --yes --update ppa:ansible/ansible
+sudo apt-get update
+sudo apt-get install ansible
+```
+B. Check installation
+
+```ansible --version```
+
+C. Install tree
+
+- This is a package manager
+
+```sudo apt-get install tree```
+
+D. Examine tree
+
+```
+cd /etc/ansible
+tree
+```
+
+- This will display files in user friendly way
+
+E. Create host entries
+
+### 5. Test connection to other VMs
+
+```
+ping 192.168.33.10
+ping 192.168.33.11
+```
+
+- This chould how bytes coming from the IPs
+- However you do not have access to the servers yet
+
+### 6. Set up access to the servers from the controller server (aws)
+
+```sudo nano hosts```
+
+- Add the below text into the file
+- This creates hosts for connections to other servers
+
+```
+[web]
+192.168.33.10 ansible_connection=ssh ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+
+[db]
+192.168.33.11 ansible_connection=ssh ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+
+# [aws]
+# 192.168.33.12 ansible_connection=ssh ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+```
+
 ## Infastructure as code (IAC)
 
 **Definition**
