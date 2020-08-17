@@ -92,6 +92,25 @@ ping 192.168.33.11
 # 192.168.33.12 ansible_connection=ssh ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
 ```
 
+### 7. Connect to the other machines 
+
+```ssh vagrant@192.168.33.10```
+
+- Enter password as "vagrant".
+	- You will not be able to see the password entered
+- This should give you access to the machine
+
+- Repeat for the DB machine
+
+```ssh vagrant@192.168.33.11```
+
+### 8. Ping machines with Ansible command
+
+```ansible all -m ping```
+
+- This will ping connection to web and db
+- If succesful it will display a green message saying success
+
 ## Infastructure as code (IAC)
 
 **Definition**
