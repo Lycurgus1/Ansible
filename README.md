@@ -16,7 +16,7 @@ PIC PLACEHOLDER - Ansible_pic.PNG
 
 ## Ansible
 
-**Why ansible(over other programs**
+**Why use Ansible**
 
 - Simple
 	- Connect with SSH key into servers
