@@ -64,8 +64,6 @@ tree
 
 - This will display files in user friendly way
 
-E. Create host entries
-
 ### 5. Test connection to other VMs
 
 ```
