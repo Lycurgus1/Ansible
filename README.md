@@ -128,6 +128,28 @@ ansible db -a "uname -a"
 - Goes into all servers and runs command in shell (bash) format
 - Returns result of command being run in each server
 
+### 10. Create playbook
+
+```
+sudo su
+nano filename.yml
+```
+
+- Start file with comment, then --- 
+- Identation very important
+- Follow example of install_nginx_web.yml
+
+PIC PLACEDHOLDER nginx_yml_file.png
+
+### 11. Run playbook
+
+- You have to exit root mode
+
+```
+exit
+ansible-playbook install_nginx_web.yml
+```
+
 ### Ansible ad-hoc command exercise
 
 ```ansible all -m shell -a "ls -a"```
@@ -160,6 +182,30 @@ ansible db -a "uname -a"
 
 ```https://www.tecmint.com/commands-to-collect-system-and-hardware-information-in-linux/```
 
+## Ansible Playbooks
+
+**What are they**
+
+- YAML files, .yml extension
+- Automates the tasks in multiple servers
+
+**Why we use them**
+
+- Used to install software across multiple machines
+- For configuration management
+
+**Creating a playbook**
+
+- See above (Step 11)
+
+**YAML Languague**
+
+- Yet another markdown language
+- Files start with ```---```
+- States are:
+	- Present 
+	- Absent
+	- Latest (most up to date version)
 
 ## Infastructure as code (IAC)
 
