@@ -111,6 +111,56 @@ ping 192.168.33.11
 - This will ping connection to web and db
 - If succesful it will display a green message saying success
 
+### 9. Interact with other servers and get information
+
+- Run commands from the Anisble Controller server
+
+```
+ansible web -a "date"
+ansible db -a "uname -a"
+```
+- Gets date and time of the web server
+- Then current operating system of machine
+- "-a" gets all information
+
+```ansible all -m shell -a "ls -a"```
+
+- Goes into all servers and runs command in shell (bash) format
+- Returns result of command being run in each server
+
+### Ansible ad-hoc command exercise
+
+```ansible all -m shell -a "ls -a"```
+
+```ansible all -m copy -a "src=/home/vagrant/TESTFILE.md dest=/home/vagrant"```
+
+```ansible all -m shell -a "cat TESTFILE.md"```
+
+```ansible all -m shell -a "echo 'I love ansible' > TESTFILE.md"```
+
+```ansible all -m setup```
+
+**Find out up-time**
+
+```ansible web -a "uptime"```
+
+**Find out env variables**
+
+```ansible all -a "env"```
+
+**Find out IPs**
+
+```ansible all -a "hostname -I"```
+
+**Find out disk space**
+
+```ansible all -a "free"```
+
+- For more information see below
+
+```https://www.tecmint.com/commands-to-collect-system-and-hardware-information-in-linux/```
+
+
 ## Infastructure as code (IAC)
 
 **Definition**
