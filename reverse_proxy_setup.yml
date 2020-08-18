@@ -9,6 +9,16 @@
 
 # setup app
   tasks:
+  - name: Copy app folder
+    copy:
+      src: /home/vagrant
+      dest: /home/vagrant
+
+  - name: Copy environment folder
+    copy:
+      src: /home/vagrant
+      dest: /home/vagrant
+
   - name: Update server
     command: apt-get update -y
 
@@ -36,7 +46,7 @@
     shell: rm /etc/nginx/sites-available/default
 
   - name: link new defualt file up
-    shell: cp /home/vagrant/nginx.default /etc/nginx/sites-available/default
+    shell: cp /home/vagrant/environment/nginx.default /etc/nginx/sites-available/default
 
   - name: restart nginx
     service:
