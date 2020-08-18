@@ -71,8 +71,9 @@ ping 192.168.33.10
 ping 192.168.33.11
 ```
 
-- This chould how bytes coming from the IPs
+- This should show bytes coming from the IPs
 - However you do not have access to the servers yet
+- Press ctrl + c to cancel the ping
 
 ### 6. Set up access to the servers from the controller server (aws)
 
@@ -149,6 +150,10 @@ nano filename.yml
 exit
 ansible-playbook install_nginx_web.yml
 ```
+
+- You have now install nginx on your web server and can access the nginx test page
+	- Use your web IP, in this case ```192.168.33.10``` 
+	- Input into into a browser and the nginx test page should appear
 
 ### Ansible ad-hoc command exercise
 
