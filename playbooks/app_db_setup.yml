@@ -65,17 +65,17 @@
 
   # The two copy commands copy a folder from the current machine to the machine being targetted
   # In this instance the folders from the AWS machine is being transferred to the App machine
-  - name: Copy app folder
-    copy:
-      # Specifying where the the folder is in AWS
-      src: /home/vagrant
-      # Specifying where the folder should be placed in App
-      dest: /home/vagrant
+#  - name: Copy app folder
+#    copy:
+#      # Specifying where the the folder is in AWS
+#      src: /home/vagrant
+#      # Specifying where the folder should be placed in App
+#      dest: /home/vagrant
 
-  - name: Copy environment folder
-    copy:
-      src: /home/vagrant
-      dest: /home/vagrant
+#  - name: Copy environment folder
+#    copy:
+#      src: /home/vagrant
+#      dest: /home/vagrant
 
     # This will run the command below to update the server
   - name: Update server
@@ -117,4 +117,16 @@
     service:
       name: nginx
       state: restarted
+    # Setting environmental variable for DB connection
+    environment:
+      DB_HOST: mongodb://192.168.33.11:27017/posts
 
+    # Install npm
+  - name: Install npm
+    shell: npm install
+
+    # This installs pm2
+  - name: install pm2
+    npm:
+      name: pm2
+      global: yes
