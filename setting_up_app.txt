@@ -12,6 +12,7 @@ node app.js
 192.168.33.10:3000 in browser
 
 port 80
+scp -r app/ vagrant@192.168.33.10:
 scp nginx.default vagrant@192.168.33.10:
 ansible-playbook app_setup.yml
 ssh vagrant@192.168.33.10
