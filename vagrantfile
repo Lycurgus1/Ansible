@@ -48,8 +48,6 @@ Vagrant.configure("2") do |config|
     
     config.hostsupdater.aliases = ["development.db"]     
 
-    aws.vm.synced_folder "environment", "/home/ubuntu/environment", privileged: false
-
     end
 
 # creating third VM called aws 
@@ -63,7 +61,5 @@ Vagrant.configure("2") do |config|
     
     config.hostsupdater.aliases = ["development.aws"] 
 
-    aws.vm.synced_folder "app", "/home/ubuntu/app", privileged: false
-    aws.vm.synced_folder "environment", "/home/ubuntu/environment", privileged: false
    end
 end
