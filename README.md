@@ -1,5 +1,7 @@
 # Ansible
 
+![logo](images/ansible_logo.png)
+
 ## Dependencies
 
 **Git Bash**
