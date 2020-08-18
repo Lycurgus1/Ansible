@@ -40,39 +40,11 @@
 
 ## Setting up DB and enabling /posts
 
-scp -r environment/ vagrant@192.168.33.11:
+scp -r environment/ vagrant@192.168.33.10:
 
-sudo apt-get update
+scp -r app/ vagrant@192.168.33.10:
 
-sudo apt-get install -y mongodb
-
-sudo rm /etc/mongodb.conf
-
-sudo touch /etc/mongodb.conf
-
-sudo chmod 666 /etc/mongodb.conf
-
-cd /etc
-     echo "# mongodb.conf
-
-        storage:
-          dbPath: /var/lib/mongodb
-          journal:
-            enabled: true
-        systemLog:
-          destination: file
-          logAppend: true
-          path: /var/log/mongodb/mongod.log
-
-        net:
-          port: 27017
-          bindIp: 0.0.0.0" >> mongodb.conf
-
- sudo systemctl restart mongodb
-
- sudo systemctl enable mongodb
-
-app needs to have playbook done already
+ansible-playbook app_db_setup.yml
 
 ssh vagrant@192.168.33.10
 
@@ -82,7 +54,7 @@ cd app
 
 npm install
 
-node app.js
+pm2 start app.js
 
 
 ## Useful links
