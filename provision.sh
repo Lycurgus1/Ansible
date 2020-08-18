@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# This fle enables quick set up of a controller virtual machine
+# It is a summary of what is broken down in the main readme
+
 # The commands required to set up each vm
 
   sudo apt-get  update
