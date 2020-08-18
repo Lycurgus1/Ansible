@@ -1,0 +1,120 @@
+# This file automatically sets up the App and DB machine
+
+---
+
+# This is where you are installing the files
+- hosts: db
+
+# This collects information and returns it to you when the play book is run
+  gather_facts: yes
+
+# This signifies the commands will work from root user
+  become: true
+
+# Setup the DB machine
+  tasks:
+
+    # This will run the command below to update the server
+  - name: Update server
+    command: apt-get update -y
+
+    # This will install the package mongodb, to state "present" (installed)
+  - name: Install mongod
+    apt: pkg=mongodb state=present
+
+    # This will run a shell command to remove and recreate the mongo.conf file
+  - name: mongodb.conf edit file
+    shell: |
+      sudo rm /etc/mongodb.conf
+      sudo touch /etc/mongodb.conf
+      sudo chmod 666 /etc/mongodb.conf
+      cd /etc
+      echo "# mongodb.conf
+
+        storage:
+          dbPath: /var/lib/mongodb
+          journal:
+            enabled: true
+        systemLog:
+          destination: file
+          logAppend: true
+          path: /var/log/mongodb/mongod.log
+
+        net:
+          port: 27017
+          bindIp: 0.0.0.0" >> mongodb.conf
+      sudo systemctl restart mongodb
+
+    # This runs the below command in admin mode to enable mongodb
+  - name: Enable mongod
+    command: systemctl enable mongodb
+    # This runs it in admin mode
+    become: true
+
+# This is where you are installing the files
+- hosts: web
+
+# This collects information and returns it to you when the play book is run
+  gather_facts: yes
+
+# This signifies the commands will work from root user
+  become: true
+
+# Setup the App Machine
+  tasks:
+
+  # The two copy commands copy a folder from the current machine to the machine being targetted
+  # In this instance the folders from the AWS machine is being transferred to the App machine
+  - name: Copy app folder
+    copy:
+      # Specifying where the the folder is in AWS
+      src: /home/vagrant
+      # Specifying where the folder should be placed in App
+      dest: /home/vagrant
+
+  - name: Copy environment folder
+    copy:
+      src: /home/vagrant
+      dest: /home/vagrant
+
+    # This will run the command below to update the server
+  - name: Update server
+    command: apt update -y
+
+    # This will run the command below to upgrade the server
+  - name: upgrade server
+    command: apt upgrade -y
+
+    # This will install the package software-properties-common, using command line
+  - name: Install nodejs dependencies
+    command: apt install software-properties-common -y
+    ignore_errors: True
+
+    # This will install nodejs dependencies, using command line to connect to a webpage
+  - name: Download nodejs dependencies
+    shell: curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+    # Ignore errors means errors will not stop the playbook running
+    ignore_errors: True
+
+    # This will install the package nodejs, to state "present" (installed)
+  - name: Install nodejs
+    apt: pkg=nodejs state=present
+
+    # This will install the package nginx, to state "present" (installed)
+  - name: Install nginx
+    apt: pkg=nginx state=present
+
+    # This will delete the intial nginx file, using shell commands
+  - name: remove old default file
+    shell: rm /etc/nginx/sites-available/default
+
+    # This will recreate, using shell commands
+  - name: link new defualt file up
+    shell: cp /home/vagrant/environment/app/nginx.default /etc/nginx/sites-available/default
+
+    # This uses the service module to restart the named service(nginx)
+  - name: restart nginx
+    service:
+      name: nginx
+      state: restarted
+
