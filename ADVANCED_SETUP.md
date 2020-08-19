@@ -4,6 +4,10 @@
 
 - Follow up to step 8.
 	- At this point you will have connected the controller server to the other machine
+- You will need to have run the below command on your controller machine
+
+```git clone https://github.com/Lycurgus1/NodeJSAppPipeline```
+
 
 ### 2. Run the app_db_setup playbook
 
@@ -44,7 +48,4 @@ https://www.mydailytutorials.com/how-to-copy-files-and-directories-in-ansible-us
 
 - Make envivoremental variable persistent
 	- Use bashrc file, replace existing one with your one that has DB_HOST on it
-- Make shift git clone to controller server
-	- Use to get playbook into etc/ansible
-	- Synchronise app and environment folder into web server
 - Use bash file to auto set up servers
