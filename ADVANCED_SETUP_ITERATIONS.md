@@ -104,7 +104,7 @@ ansible-playbook app_db_setup.yml
 
 - Due to the enviromental variable not setting. Ideally not needed
 
-````
+```
 export DB_HOST=mongodb://192.168.33.11:27017/posts
 cd app
 npm install
