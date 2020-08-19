@@ -63,21 +63,9 @@
 # Setup the App Machine
   tasks:
 
-  # The two copy commands copy a folder from the current machine to the machine being targetted
-  # In this instance the folders from the AWS machine is being transferred to the App machine
-  - name: Copy app folder
-    copy:
-      # Specifying where the the folder is in AWS
-      src: /home/vagrant/app
-      # Specifying where the folder should be placed in App
-      dest: /home/vagrant
-      force: no
-
-  - name: Copy environment folder
-    copy:
-      src: /home/vagrant/environment
-      dest: /home/vagrant
-      force: no
+  # This clones a git repositry from a github branch to download the app and environment folders
+  - name: Copy folders from github into here
+    shell: git clone https://github.com/Lycurgus1/NodeJSAppPipeline
 
     # This will run the command below to update the server
   - name: Update server
@@ -112,16 +100,13 @@
 
     # This will recreate, using shell commands
   - name: link new defualt file up
-    shell: cp /home/vagrant/environment/app/nginx.default /etc/nginx/sites-available/default
+    shell: cp /home/vagrant/NodeJSAppPipeline/environment/app/nginx.default /etc/nginx/sites-available/default
 
     # This uses the service module to restart the named service(nginx)
   - name: restart nginx
     service:
       name: nginx
       state: restarted
-    # Setting environmental variable for DB connection
-    environment:
-      DB_HOST: mongodb://192.168.33.11:27017/posts
 
     # Install npm
   - name: Install npm
@@ -146,4 +131,3 @@
       DB_HOST: mongodb://vagrant@192.168.33.11:27017/posts?authSource=admin
     become_user: root
     ignore_errors: True
-
