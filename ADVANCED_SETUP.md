@@ -1,6 +1,9 @@
 # Automatically running the web app with posts enabled
 
-### 1. Run the vagrant machines and follow instructions on main readme to set up the controller machine
+### 1. Follow instructions on main readme to set up machines
+
+- Follow up to step 8.
+	- At this point you will have connected the controller server to the other machine
 
 ### 2. Run the app_db_setup playbook
 
@@ -36,3 +39,12 @@ https://medium.com/@smartsplash/using-scp-and-vagrant-scp-in-virtualbox-to-copy-
 https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#playbook-language-example
 
 https://www.mydailytutorials.com/how-to-copy-files-and-directories-in-ansible-using-copy-and-fetch-modules/
+
+# Next Iteration
+
+- Make envivoremental variable persistent
+	- Use bashrc file, replace existing one with your one that has DB_HOST on it
+- Make shift git clone to controller server
+	- Use to get playbook into etc/ansible
+	- Synchronise app and environment folder into web server
+- Use bash file to auto set up servers
