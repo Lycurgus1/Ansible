@@ -1,7 +1,5 @@
 # Automatically running the web app with posts enabled
 
-## Setting up DB and enabling /posts automatically final iteration
-
 ### 1. Run the vagrant machines and follow instructions on main readme to set up the controller machine
 
 ### 2. Run the app_db_setup playbook
