@@ -115,6 +115,26 @@ pm2 start app.js
 
 ```192.168.33.10```
 
+## Setting up DB and enabling /posts automatically final iteration
+
+### 1. Run the vagrant machines and follow instructions on main readme to set up the controller machine
+
+### 2. Run the app_db_setup playbook
+
+```
+vagrant ssh aws
+cd /etc/ansible
+ansible-playbook app_db_setup.yml
+```
+
+### 3. See posts on browser
+
+```
+192.168.33.10
+http://192.168.33.10/Fibonacci/9
+192.168.33.10/posts
+```
+
 ## Common Errors
 
 - Database not seeding on posts, insert the below line
