@@ -120,3 +120,5 @@ pm2 start app.js
 https://medium.com/@smartsplash/using-scp-and-vagrant-scp-in-virtualbox-to-copy-from-guest-vm-to-host-os-and-vice-versa-9d2c828b6197
 
 https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#playbook-language-example
+
+https://www.mydailytutorials.com/how-to-copy-files-and-directories-in-ansible-using-copy-and-fetch-modules/
