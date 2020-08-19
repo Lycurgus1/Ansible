@@ -132,3 +132,20 @@
     npm:
       name: pm2
       global: yes
+
+    # Auto setting up the app
+    # This includes setting of an environmental variable
+  - name: Auto setup app
+    shell: |
+      export DB_HOST=mongodb://vagrant@192.168.33.11:27017/posts?authSource=admin
+      sudo npm install
+      cd ~/NodeJSAppPipeline/app
+      sudo npm install
+      node seeds/seed.js
+      pm2 kill
+      pm2 start app.js
+#    environment:
+#      DB_HOST: mongodb://vagrant@192.168.33.11:27017/posts?authSource=admin
+    become_user: root
+    ignore_errors: True
+
