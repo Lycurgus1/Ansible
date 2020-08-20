@@ -1,0 +1,1 @@
+DB_HOST=mongodb://vagrant@192.168.33.11:27017/posts?authSource=admin

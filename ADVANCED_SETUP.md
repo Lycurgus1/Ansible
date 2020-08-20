@@ -48,4 +48,9 @@ https://www.mydailytutorials.com/how-to-copy-files-and-directories-in-ansible-us
 
 - Make envivoremental variable persistent
 	- Use bashrc file, replace existing one with your one that has DB_HOST on it
+	- .bashrc file with below in it
+	- export DB_HOST=mongodb://vagrant@192.168.33.11:27017/posts?authSource=admin
+
 - Use bash file to auto set up servers
+	- Got from humza
+	- Use bash setup file.txt
