@@ -58,6 +58,11 @@
 https://www.digitalocean.com/community/tutorials/what-is-immutable-infrastructure
 
 
+**Cloud watch**
+
+- Used on AWS to monitor applcations, respond to perforance changes and optimise resource use. 
+	- 
+
 ## Automation Tools we have use
 
 - Ansible
@@ -73,3 +78,136 @@ https://www.digitalocean.com/community/tutorials/what-is-immutable-infrastructur
         - Playbook can add hosts to install software easily on mutltiple machines
         - May need to change apt > yam but otherwise just need to change variables
         - Flexible and scalablae configuriaton management
+
+## Buzzwords
+
+
+- Replicate of servers using docker etc. 
+	- Spins up automatically and scales on demand	
+	- Closes once not needed
+
+## Non scalable or highly available app
+
+### Machine
+
+Linx
+
+### What is it
+
+App
+
+### Security
+
+VPC
+
+### Scalable or Available
+
+No
+
+
+## Making scalable and available app
+
+
+### Machine
+
+- Multi systems supported 
+	- multiple app servers to host multiple compatible version
+
+### What is it
+
+- N tier architcture with web app
+- ## Why use cloud?
+
+### Old days 
+
+![old_architecture](images/pic_placeholder.PNG)
+
+- When demand surged would scale up to 150 GB
+	- Sunk cost however as cannot scale down
+
+- When traffic goes back down
+	- Cannot scale down
+	- Money already spent
+
+- Would have single server in your office
+	- Scale up would be to use more servers
+	- Now have more resource opportunities with cloud
+
+### Modern day
+
+- When demands surge cloud computing scales up
+	- Flexible cost
+	- Define maximum and minium instances
+- When traffic goes back down
+	- Less instances used
+	- Costs saving
+- Auto scaling group
+	- Auto scales based on maximum and minimum instances
+	- Health checks and notifications to see when 80% of computing power used
+- If bank, govt etc, can use hybrid cloud
+	- On premise data storage
+- Monitor with Route 53 
+	- Person on site told if CPU usage above 80% etc.Load balancing tier
+	- Route 53 to ensure avaialbityy
+- Web tier with nginx to create web connection
+- App tier 
+- Cache tier for ephermal tier
+	- Shifts load from DB as it is not reqpeatdly queied
+	- Enables auto scaling
+- DB tier
+	-  Where DB is stored
+
+### Security
+
+- Use route 53 to set up private doman name system
+
+### Scalable
+
+- Scale up with more powerful EC2 or out with more EC2s
+	- Micro services
+	- Use ansible wiht micro services (infastrucute automation_
+- Pay for what you use
+	- Use billing alerts and cost caluclator
+
+### Available
+
+- Use multuple availablity zones (Clusters of data servers)
+	- Ensures service outage less likely
+	- Cache tier
+- Maintain back up systems for back up
+	- Along with virtualised servers for zero down time
+- Could even spread out to multiple service providers
+	- Azure and AWS
+
+## Why use cloud?
+
+### Old days 
+
+![old_architecture](images/pic_placeholder.PNG)
+
+- When demand surged would scale up to 150 GB
+	- Sunk cost however as cannot scale down
+
+- When traffic goes back down
+	- Cannot scale down
+	- Money already spent
+
+- Would have single server in your office
+	- Scale up would be to use more servers
+	- Now have more resource opportunities with cloud
+
+### Modern day
+
+- When demands surge cloud computing scales up
+	- Flexible cost
+	- Define maximum and minium instances
+- When traffic goes back down
+	- Less instances used
+	- Costs saving
+- Auto scaling group
+	- Auto scales based on maximum and minimum instances
+	- Health checks and notifications to see when 80% of computing power used
+- If bank, govt etc, can use hybrid cloud
+	- On premise data storage
+- Monitor with Route 53 
+	- Person on site told if CPU usage above 80% etc.
