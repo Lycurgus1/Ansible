@@ -13,3 +13,4 @@ node_modules
 package-lock.json
 *.log
 vagrant@192.168.33.12/
+vagrant@192.168.33.11/
